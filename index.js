@@ -2,7 +2,7 @@ const { ApolloServer } = require('apollo-server');
 
 const { Query, Product, Category, Review, Mutation } = require('./lib/resolvers');
 const typeDefs = require('./lib/schema');
-const { products, categories, reviews } = require('./lib/mocks');
+const db = require('./lib/mocks');
 
 const server = new ApolloServer({
   typeDefs,
@@ -10,9 +10,7 @@ const server = new ApolloServer({
     Query, Product, Category, Review, Mutation 
   },
   context: {
-    products,
-    categories,
-    reviews
+    db
   }
 });
 
